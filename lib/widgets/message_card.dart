@@ -1,12 +1,14 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mindlee_demo/controllers/riverpod_menagement.dart';
 import 'package:mindlee_demo/models/daily_message_models/daily_message_model.dart';
 import 'package:mindlee_demo/utils/constant.dart';
 import 'package:mindlee_demo/utils/custom_theme_data.dart';
 import 'package:mindlee_demo/utils/extensions.dart';
 import 'package:mindlee_demo/utils/fonts.dart';
 
-class MessageCard extends StatelessWidget {
+class MessageCard extends ConsumerWidget {
   const MessageCard({
     super.key,
     required this.model,
@@ -14,7 +16,10 @@ class MessageCard extends StatelessWidget {
 
   final DailyMessageModel model;
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    var read = ref.read(dailyMessageController);
+    var watch = ref.watch(dailyMessageController);
+
     Size size = MediaQuery.of(context).size;
     return SafeArea(
       child: Container(
@@ -61,11 +66,21 @@ class MessageCard extends StatelessWidget {
               style: customFont16Secondary,
             ),
             const SizedBox(height: AppConstant.padding20),
-            const Row(
+            Row(
               children: [
-                Icon(
-                  Icons.favorite_border,
-                  color: CustomThemeData.whiteColor,
+                InkWell(
+                  onTap: () {
+                    read.isLiked(id: model.id);
+                  },
+                  child: watch.likedList.contains(model.id)
+                      ? const Icon(
+                          Icons.favorite,
+                          color: Colors.red,
+                        )
+                      : const Icon(
+                          Icons.favorite_border,
+                          color: CustomThemeData.whiteColor,
+                        ),
                 ),
               ],
             ),

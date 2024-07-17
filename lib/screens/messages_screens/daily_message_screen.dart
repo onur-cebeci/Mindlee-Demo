@@ -15,9 +15,7 @@ class DailyMessageScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    Size size = MediaQuery.of(context).size;
     var read = ref.read(dailyMessageController);
-    var watch = ref.watch(dailyMessageController);
 
     return Scaffold(
       body: Container(

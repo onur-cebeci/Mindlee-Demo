@@ -1,3 +1,5 @@
+// ignore_for_file: unused_result
+
 import 'package:flutter/material.dart';
 import 'package:mindlee_demo/models/daily_message_models/daily_message_model.dart';
 
@@ -39,4 +41,21 @@ class DailyMessageScreenController extends ChangeNotifier {
         date: "28.01.2024",
         isLike: false),
   ];
+
+  List<String> likedList = [];
+  bool liked = false;
+
+  void setLikedList({required List<String> list}) {
+    likedList = list;
+    notifyListeners();
+  }
+
+  void isLiked({required String id}) {
+    if (likedList.contains(id)) {
+      likedList.remove(id);
+    } else {
+      likedList.add(id);
+    }
+    notifyListeners();
+  }
 }
