@@ -1,9 +1,26 @@
 // ignore_for_file: unused_result
 
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:mindlee_demo/models/daily_message_models/daily_message_model.dart';
+import 'package:mindlee_demo/services/daily_message_services/daily_message_service.dart';
+
+enum DailyMessagesServiceStatus {
+  loading,
+  initial,
+  notFound,
+  error,
+  completed,
+  success
+}
 
 class DailyMessageScreenController extends ChangeNotifier {
+//
+  DailyMessageService service = DailyMessageService();
+  List<DailyMessageModel> dailyMessageList = [];
+
+  DailyMessagesServiceStatus status = DailyMessagesServiceStatus.initial;
+
   final List<DailyMessageModel> dailyMessagesList = const [
     DailyMessageModel(
         id: "1",
@@ -56,6 +73,20 @@ class DailyMessageScreenController extends ChangeNotifier {
     } else {
       likedList.add(id);
     }
+    notifyListeners();
+  }
+
+  //
+  setDailyMessage({required List<DailyMessageModel> list}) async {
+    dailyMessageList = list;
+  }
+
+  Future<void> fetchDailyMessages() async {
+    status = DailyMessagesServiceStatus.loading;
+
+    final list = await service.fetchDailyMessages();
+    setDailyMessage(list: list);
+    status = DailyMessagesServiceStatus.completed;
     notifyListeners();
   }
 }
