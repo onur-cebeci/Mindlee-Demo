@@ -14,6 +14,7 @@ class DailyMessageAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 90,
       padding: const EdgeInsets.only(
           top: AppConstant.padding40,
           left: AppConstant.padding25,
