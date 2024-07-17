@@ -1,5 +1,7 @@
 {
 
-"daily_message_text":"Günlük Mesaj"
+"daily_message_text":"Günlük Mesaj",
+"dear" : "Sevgili",
+"luck_number_of_the_day" :"Günün Şanslı Sayısı"
 
 }
