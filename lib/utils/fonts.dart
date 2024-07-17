@@ -274,5 +274,5 @@ const EdgeInsets customPaddingSmall = EdgeInsets.symmetric(
   horizontal: AppConstant.padding15,
 );
 const EdgeInsets customPaddingLarge = EdgeInsets.symmetric(
-  horizontal: AppConstant.largePadding,
+  horizontal: AppConstant.padding30,
 );
