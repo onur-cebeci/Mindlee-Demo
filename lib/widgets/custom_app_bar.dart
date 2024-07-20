@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mindlee_demo/utils/constant.dart';
 import 'package:mindlee_demo/utils/custom_theme_data.dart';
 import 'package:mindlee_demo/utils/fonts.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({
@@ -12,7 +14,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       title: Text(
         'Mindlee App',
-        style: customFont20Bold.copyWith(color: CustomThemeData.primaryColor),
+        style: CustomFonts.customFont20Bold
+            .copyWith(color: CustomThemeData.primaryColor),
       ),
       centerTitle: true,
       elevation: 1,
@@ -21,5 +24,5 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(60);
+  Size get preferredSize => Size.fromHeight(AppConstant.padding10.h);
 }

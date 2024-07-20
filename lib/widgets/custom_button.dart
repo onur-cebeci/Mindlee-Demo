@@ -29,7 +29,7 @@ class CustomButtonWidget extends StatelessWidget {
         child: Text(
           text,
           textAlign: TextAlign.center,
-          style: customFont16,
+          style: CustomFonts.customFont16,
         ).tr(),
       ),
     );
