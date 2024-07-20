@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class CustomThemeData {
+@immutable
+final class CustomThemeData {
   static const Color primaryColor = Color(0xFF405C9D);
-
   static const Color scaffoldBackgroundColor = Color(0xffF5F5F5);
   static const Color dialogBackgroundColor = Color(0xffFFFFFF);
   static const Color whiteColor = Color(0xffFFFFFF);
@@ -13,8 +13,10 @@ class CustomThemeData {
   static const Color blackColor = Color(0xff000000);
   static const Color blackColorLight = Color(0xff595959);
 
-  static const Color blueColor = Color(0xff515C6F);
+  static const Color blueColor = Color(0xFF355489);
   static const Color blueColorDark = Color(0xff061434);
+
+  static const Color redColor = Color.fromARGB(255, 219, 57, 57);
 
   static ThemeData customLightTheme = ThemeData(
     appBarTheme: const AppBarTheme(backgroundColor: primaryColor),

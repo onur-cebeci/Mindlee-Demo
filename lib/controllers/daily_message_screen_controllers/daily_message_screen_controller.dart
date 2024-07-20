@@ -26,14 +26,14 @@ class DailyMessageScreenController extends ChangeNotifier {
         id: "1",
         userName: "Onur",
         dailyMessage:
-            "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using making it look like readable English. Many desktop publishing packages and web-It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using making it look like readable English. Many desktop publishing packages and web ",
+            "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using making it look like readable English. Many desktop publishing packages and web-It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using making it look like readable English. Many desktop publishing packages and web  - It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using making it look like readable English. Many desktop publishing packages and web-It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using making it look like readable English. Many desktop publishing packages and web",
         date: "28.01.2024",
         isLike: false),
     DailyMessageModel(
         id: "2",
         userName: "Onur",
         dailyMessage:
-            "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using making it look like readable English. Many desktop publishing packages and web ",
+            "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using making it look like readable English. Many desktop publishing packages and web The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using making it look like readable English. Many desktop publishing packages and web Many desktop publishing packages and web ",
         date: "28.01.2024",
         isLike: false),
     DailyMessageModel(
@@ -60,7 +60,20 @@ class DailyMessageScreenController extends ChangeNotifier {
   ];
 
   List<String> likedList = [];
-  bool liked = false;
+
+  Size textSize = const Size(0, 0);
+
+  void getTextSize({required String text}) {
+    final TextPainter textPainter = TextPainter(
+      text: TextSpan(
+        text: text,
+      ),
+      maxLines: 1,
+      textDirection: TextDirection.ltr,
+    )..layout(minWidth: 0, maxWidth: double.infinity);
+
+    textSize = textPainter.size;
+  }
 
   void setLikedList({required List<String> list}) {
     likedList = list;
@@ -77,7 +90,7 @@ class DailyMessageScreenController extends ChangeNotifier {
   }
 
   //
-  setDailyMessage({required List<DailyMessageModel> list}) async {
+  void setDailyMessage({required List<DailyMessageModel> list}) {
     dailyMessageList = list;
   }
 

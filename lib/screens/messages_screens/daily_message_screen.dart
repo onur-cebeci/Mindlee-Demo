@@ -4,10 +4,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mindlee_demo/controllers/riverpod_menagement.dart';
 import 'package:mindlee_demo/utils/constant.dart';
 import 'package:mindlee_demo/utils/custom_theme_data.dart';
-import 'package:mindlee_demo/utils/extensions.dart';
+import 'package:mindlee_demo/utils/translations/locale_keys.g.dart';
 import 'package:mindlee_demo/widgets/custom_button.dart';
 import 'package:mindlee_demo/widgets/daily_message_app_bar.dart';
 import 'package:mindlee_demo/widgets/message_card.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 @RoutePage()
 class DailyMessageScreen extends ConsumerWidget {
@@ -22,7 +23,7 @@ class DailyMessageScreen extends ConsumerWidget {
         decoration: const BoxDecoration(
             image: DecorationImage(
                 image: NetworkImage(
-                  'https://img.lovepik.com/background/20211029/medium/lovepik-gorgeous-background-mobile-wallpaper-image_400268958.jpg',
+                  AppConstant.dailyPictureUrl,
                 ),
                 fit: BoxFit.fill)),
         child: Column(
@@ -30,9 +31,7 @@ class DailyMessageScreen extends ConsumerWidget {
             const DailyMessageAppBar(),
             const SizedBox(height: AppConstant.padding20),
             Expanded(
-              child: ListView.builder(
-                shrinkWrap: true,
-                padding: const EdgeInsets.only(bottom: AppConstant.padding20),
+              child: PageView.builder(
                 scrollDirection: Axis.vertical,
                 itemCount: read.dailyMessagesList.length,
                 itemBuilder: (context, i) {
@@ -58,14 +57,14 @@ class MessageBottomBottons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 80,
+      height: AppConstant.padding10.h,
       child: Padding(
         padding: const EdgeInsets.only(bottom: AppConstant.padding10),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CustomButtonWidget(
-              text: 'luck_number_of_the_day',
+              text: LocaleKeys.luck_number_of_the_day,
               onTap: () {},
             ),
             const SizedBox(width: AppConstant.padding20),
@@ -73,7 +72,7 @@ class MessageBottomBottons extends StatelessWidget {
               padding: const EdgeInsets.all(AppConstant.paddingButton),
               decoration: BoxDecoration(
                 color: CustomThemeData.whiteColor,
-                borderRadius: BorderRadius.circular(60),
+                borderRadius: BorderRadius.circular(60.w),
               ),
               child: const Icon(
                 Icons.edit_square,

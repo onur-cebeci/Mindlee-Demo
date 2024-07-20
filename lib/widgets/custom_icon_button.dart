@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mindlee_demo/utils/constant.dart';
 import 'package:mindlee_demo/utils/custom_theme_data.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 class CustomIconButton extends StatelessWidget {
   const CustomIconButton({
@@ -19,7 +20,7 @@ class CustomIconButton extends StatelessWidget {
           padding: const EdgeInsets.all(AppConstant.padding5),
           decoration: BoxDecoration(
               color: CustomThemeData.whiteColor,
-              borderRadius: BorderRadius.circular(60)),
+              borderRadius: BorderRadius.circular(60.px)),
           child: Icon(icon)),
     );
   }

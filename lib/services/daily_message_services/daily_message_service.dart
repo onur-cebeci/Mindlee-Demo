@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:mindlee_demo/models/daily_message_models/daily_message_model.dart';
